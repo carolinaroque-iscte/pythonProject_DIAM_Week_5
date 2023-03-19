@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar uma nova questão:</title>
+</head>
+<body>
+
+<h1>ISCTE - Instituto Universitário de Lisboa</h1>
+<h2>Cria uma nova questão aqui:</h2>
+
+{% if error_message %}
+    <p><strong>{{error_message}}</strong></p>
+{% endif %}
+
+<form class="cria_questao"  method="post" action="{% url 'votacao:inserirquestao' %}"  target="_self">
+  {% csrf_token %}
+<fieldset>
+  <label for="questao_texto">Texto da nova questão</label><br>
+  <input type="text" id="questao_texto" name="questao_texto" value=""><br>
+  <input type="submit" value="Submit">
+</fieldset>
+</form>
+
+<a href="{% url 'votacao:index' %}">
+    <input type="button" value="Voltar">
+</a>
+
+</body>
+</html>
